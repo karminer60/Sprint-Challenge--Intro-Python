@@ -16,14 +16,16 @@ import csv
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+
 class City:
   def __init__(self, name, lat, lon):
     self.name = name
     self.lat = lat
-    self.lon = lon 
-
+    self.lon = lon
 
 cities = []
+
+
 
 def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
@@ -31,11 +33,13 @@ def cityreader(cities=[]):
   # For each city record, create a new City instance and add it to the 
   # `cities` list
   with open('cities.csv', newline='') as csvfile:
-     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-     for row in spamreader:
-         print(', '.join(row))
-    
-    return cities
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+      cities.append(row['city']) 
+      cities.append(row['lat'])
+      cities.append(row['lng'])
+  return cities
+  
 
 cityreader(cities)
 
