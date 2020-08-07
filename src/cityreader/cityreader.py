@@ -1,3 +1,5 @@
+import csv
+
 # Create a class to hold a city location. Call the class "City". It should have
 # fields for name, lat and lon (representing latitude and longitude).
 
@@ -14,13 +16,24 @@
 #
 # Note that the first line of the CSV is header that describes the fields--this
 # should not be loaded into a City object.
+class City:
+  def __init__(self, name, lat, lon):
+    self.name = name
+    self.lat = lat
+    self.lon = lon 
+
+
 cities = []
 
-def cityreader(cities=[]):
+def cityreader(City, cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # Ensure that the lat and lon valuse are all floats
   # For each city record, create a new City instance and add it to the 
   # `cities` list
+  with open('cities.csv', newline='') as csvfile:
+     spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+     for row in spamreader:
+         print(', '.join(row))
     
     return cities
 
