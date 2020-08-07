@@ -25,7 +25,7 @@ class City:
 
 cities = []
 
-def cityreader(City, cities=[]):
+def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # Ensure that the lat and lon valuse are all floats
   # For each city record, create a new City instance and add it to the 
